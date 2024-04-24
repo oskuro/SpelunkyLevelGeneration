@@ -4,8 +4,8 @@ using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
-    float roomWidth = 8f;
-    float roomHeight = 4.8f;
+    float roomWidth = 9f;
+    float roomHeight = 5f;
     [SerializeField] int levelWidth = 0;
     [SerializeField] int levelHeight = 0;
 
@@ -25,13 +25,13 @@ public class LevelGenerator : MonoBehaviour
     {
         ClearRooms();
         GenerateCriticalPath();
-        PopulateCriticalPath();
+        CreateCriticalPath();
         PopulatePathWithRooms();
-        PopulateEmptyTiles();
+        FillEmptyTiles();
         AddRandomElementsToRooms();
     }
 
-    private void PopulateCriticalPath()
+    private void CreateCriticalPath()
     {
         GameObject previousRoom = null;
         for (int i = 0; i < criticalPath.Count; i++)
@@ -86,7 +86,7 @@ public class LevelGenerator : MonoBehaviour
         //}
     }
 
-    private void PopulateEmptyTiles()
+    private void FillEmptyTiles()
     {
         for (int x = 0; x < levelWidth; x++) 
         { 

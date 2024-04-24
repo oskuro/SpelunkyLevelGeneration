@@ -155,7 +155,7 @@ MonoBehaviour:
   levelWidth: 5
   levelHeight: 5
   framePrefab: {fileID: 7250060128095956143, guid: 4a48590c1dad7274a80007e44c1f965f, type: 3}
-  criticalPathPrefab: {fileID: 7250060128095956143, guid: 2fc5aba625b4cba4d9caf00970861b94, type: 3}
+  criticalPathPrefab: {fileID: 7250060128095956143, guid: fe834b59668577042b4bdd60acf4e302, type: 3}
 --- !u!4 &217626931
 Transform:
   m_ObjectHideFlags: 0
