@@ -31,6 +31,10 @@ public class LevelGenerator : MonoBehaviour
         AddRandomElementsToRooms();
     }
 
+
+    /// <summary>
+    /// Instantiate and connect all the rooms in the criticalPath list.
+    /// </summary>
     private void CreateCriticalPath()
     {
         GameObject previousRoom = null;
@@ -48,6 +52,9 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Make sure each room has an open path to the other
+    /// </summary>
     private void ConnectRooms(GameObject previousRoom, GameObject currentRoom)
     {
         var previousPos = previousRoom.transform.position;
@@ -86,6 +93,9 @@ public class LevelGenerator : MonoBehaviour
         //}
     }
 
+    /// <summary>
+    /// Instantiate rooms around the critical path
+    /// </summary>
     private void FillEmptyTiles()
     {
         for (int x = 0; x < levelWidth; x++) 
@@ -109,6 +119,9 @@ public class LevelGenerator : MonoBehaviour
         //}
     }
 
+    /// <summary>
+    /// Generate a valid path through the level where the player can walk.
+    /// </summary>
     private void GenerateCriticalPath()
     {
         // We start at a random x column in the top y row
@@ -138,6 +151,9 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Instantiate a RoomFrame at the given grid position
+    /// </summary>
     private GameObject InstantiateRoomFrame(Vector2Int gridPosition, GameObject prefab)
     {
         // Return early
@@ -147,9 +163,11 @@ public class LevelGenerator : MonoBehaviour
             return null;
         }
 
+        // Convert Grid to World Position
         var worldPosition = new Vector2();
         worldPosition.x = gridPosition.x * roomWidth;
         worldPosition.y = gridPosition.y * roomHeight;
+
         var o = Instantiate(prefab, worldPosition, Quaternion.identity);
         roomFrames.Add(o);
         return o;
@@ -194,8 +212,14 @@ public class LevelGenerator : MonoBehaviour
         return validDirections[randomIndex];
     }
 
+    /// <summary>
+    /// Destroy all the gameobjects instantiated.
+    /// </summary>
     private void ClearRooms()
     {
+        foreach(var o in roomFrames)
+            DestroyImmediate(o);
+
         roomFrames.Clear();
     }
 }
