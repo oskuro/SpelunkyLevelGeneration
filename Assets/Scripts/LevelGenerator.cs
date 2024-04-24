@@ -4,8 +4,9 @@ using Random = UnityEngine.Random;
 
 public class LevelGenerator : MonoBehaviour
 {
-    float roomWidth = 9f;
-    float roomHeight = 5f;
+    [SerializeField] float roomWidth = 9f;
+    [SerializeField] float roomHeight = 5f;
+
     [SerializeField] int levelWidth = 0;
     [SerializeField] int levelHeight = 0;
 
